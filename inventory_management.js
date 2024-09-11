@@ -1,40 +1,21 @@
 // Task 1: Create an Inventory Array of Product Objects
 
-let Inventory = [
-    {
-        name: "Necklace",
-        price: 250.00,
-        quantity: 30,
-        lowStockLevel: 10
-    },
-    {
-        name: "Ring",
-        price: 50.00,
-        quantity: 25,
-        lowStockLevel: 10
-    },
-    {
-        name: "Earrings",
-        price: 100.00,
-        quantity: 20,
-        lowStockLevel: 10
-    },
-    {
-        name: "Bracelet",
-        price: 125.00,
-        quantity: 15,
-        lowStockLevel: 5
-    },
-    {
-        name: "Anklet",
-        price: 75.00,
-        quantity: 10,
-        lowStockLevel: 5
-    }
+const inventory = [
+
+{ name: 'Laptop', price: 1200, quantity: 10, lowStockLevel: 3 },
+    
+{ name: 'Smartphone', price: 800, quantity: 5, lowStockLevel: 2 },
+    
+{ name: 'Tablet', price: 400, quantity: 7, lowStockLevel: 1 },
+
+{ name: 'Headphones', price: 100, quantity: 15, lowStockLevel: 5 },
+    
+{ name: 'Smartwatch', price: 250, quantity: 3, lowStockLevel: 1 }
+
 ]
 
 // Results
-console.log(Inventory);
+console.log(inventory);
 
 // Task 2: Create a Function to Display Product Details
 
@@ -50,4 +31,36 @@ console.log(`Stock Status: ${stockStatus}`);
 
 }
 // Results
-displayProductDetails(Inventory[0]);
+displayProductDetails(inventory[0]);
+
+// Task 3: Create a Function to Update Product Stock After Sales
+
+function updateStock (productName, unitsSold) {
+    // Find product by name using find()
+    let product = inventory.find(item => item.name === productName);
+
+    // Check if product exists
+    if (!product) {
+        console.log (`Product "${productName}" not found.`);
+        return;
+    }
+
+    // Selling more units than avaliable in stock
+    if (unitsSold > product.quantity) {
+        console.log (`Cannot sell ${unitsSold} units of ${productName}. Only ${product.quantity} units in stock.`);
+        return;
+    }
+    // Subtract the sold units from current stock
+    product.quantity -= unitsSold;
+
+    // Check stock level
+    if (product.quantity === 0) {
+        console.log (`${product.name} is now out of stock`);
+    } else if (product.quantity <= product.lowStockLevel) {
+        console.log (`${product.name} is now low stock. Only ${product.quantity} left.`);
+    } else {
+        console.log (`${product.name} updated. ${product.quantity} units remaining.`);
+    }
+}
+// Example:
+updateStock ('Headphones', 5);
