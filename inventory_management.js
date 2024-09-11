@@ -1,4 +1,5 @@
 // Task 1: Create an Inventory Array of Product Objects
+
 let Inventory = [
     {
         name: "Necklace",
@@ -29,8 +30,24 @@ let Inventory = [
         price: 75.00,
         quantity: 10,
         lowStockLevel: 5
-    },
+    }
 ]
 
 // Results
 console.log(Inventory);
+
+// Task 2: Create a Function to Display Product Details
+
+function displayProductDetails (product) {
+    console.log (`Product Name: ${product.name}`);
+    console.log (`Price: $${product.price}`);
+    console.log (`Quanitity in Stock: ${product.quantity}`);
+
+// Check stock status with tenary operator
+
+let stockStatus = product.quantity <= product.lowStockLevel ? "Low Stock" : "In Stock";
+console.log(`Stock Status: ${stockStatus}`);
+
+}
+// Results
+displayProductDetails(Inventory[0]);
