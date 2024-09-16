@@ -107,7 +107,6 @@ function processSale(productName, unitsSold) {
   updateStock(productName, unitsSold);
 }
 // Example:
-// Example usage for Task 6:
 console.log("Processing Sales:");
 processSale('Necklace', 3);  // Process sale of 3 units of Necklace
 processSale('Earrings', 2);  // Process sale of 2 units of Earrings
