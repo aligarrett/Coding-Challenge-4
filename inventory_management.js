@@ -90,3 +90,28 @@ function calculateInventoryValue() {
 // Example:
 const totalValue = calculateInventoryValue();
 console.log(`Total Inventory Value: $${totalValue}`);
+
+// Task 6: Create a Function to Process a Sale
+
+function processSale(productName, unitsSold) {
+    // Find the product
+    const product = inventory.find(item => item.name === productName);
+
+  // If the product is not found, log an error
+  if (!product) {
+    console.log(`Error: Product "${productName}" is not in the inventory.`);
+    return;
+  }
+
+  // Update the stock for the found product
+  updateStock(productName, unitsSold);
+}
+// Example:
+// Example usage for Task 6:
+console.log("Processing Sales:");
+processSale('Necklace', 3);  // Process sale of 3 units of Necklace
+processSale('Earrings', 2);  // Process sale of 2 units of Earrings
+processSale('Ring', 5);      // Attempt to sell more units than in stock
+processSale('Anklet', 1);    // Process sale of 1 unit of Anklet
+processSale('NonExistent', 1); // Attempt to process a sale for a non-existent product
+processSale('Bracelet', 10); // Process sale of 10 units of Bracelet
