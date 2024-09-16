@@ -2,15 +2,15 @@
 
 const inventory = [
 
-{ name: 'Laptop', price: 1200, quantity: 10, lowStockLevel: 3 },
+{ name: 'Necklace', price: 1200, quantity: 10, lowStockLevel: 3 },
     
-{ name: 'Smartphone', price: 800, quantity: 5, lowStockLevel: 2 },
+{ name: 'Earrings', price: 800, quantity: 5, lowStockLevel: 2 },
     
-{ name: 'Tablet', price: 400, quantity: 7, lowStockLevel: 1 },
+{ name: 'Ring', price: 400, quantity: 7, lowStockLevel: 1 },
 
-{ name: 'Headphones', price: 100, quantity: 15, lowStockLevel: 5 },
+{ name: 'Bracelet', price: 100, quantity: 15, lowStockLevel: 5 },
     
-{ name: 'Smartwatch', price: 250, quantity: 3, lowStockLevel: 1 }
+{ name: 'Anklet', price: 250, quantity: 3, lowStockLevel: 1 }
 
 ]
 
@@ -22,7 +22,7 @@ console.log(inventory);
 function displayProductDetails (product) {
     console.log (`Product Name: ${product.name}`);
     console.log (`Price: $${product.price}`);
-    console.log (`Quanitity in Stock: ${product.quantity}`);
+    console.log (`Quantity in Stock: ${product.quantity}`);
 
 // Check stock status with tenary operator
 
@@ -63,4 +63,19 @@ function updateStock (productName, unitsSold) {
     }
 }
 // Example:
-updateStock ('Headphones', 5);
+updateStock('Necklace', 4);  // Sell 4 units of Necklace
+updateStock('Earrings', 6);  // Attempt to sell more than in stock
+updateStock('Ring', 2);      // Sell 2 units of Ring
+updateStock('NonExistent', 2);  // Attempt to update a non-existent product
+
+// Task 4: Create a Function to Check Low Stock Products
+
+function checkLowStock() {
+    inventory.forEach(product => {
+        if (product.quantity <= product.lowStockLevel) {
+            console.log(`${product.name} is low in stock. Only ${product.quantity} left.`);
+        }
+    });
+}
+// Example:
+checkLowStock();
